@@ -35,12 +35,24 @@ li a{
     height: 500px;
     padding: 30px;
 }
+.display h1, .display p{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
+    margin: 5px auto ;
+}
+
+.display p{
+    margin-bottom: 10px;
+}
+
+
+
 footer{
     text-align: center;
     color: #fff;
     background-color: #1a1515;
     padding: 30px 20px;
-    position: sticky;
+    position: fixed;
     bottom: 0;
+    width: 100%;
 
 }
