@@ -40,7 +40,7 @@ footer{
     color: #fff;
     background-color: #1a1515;
     padding: 30px 20px;
-    position: relative;
+    position: sticky;
     bottom: 0;
 
 }
