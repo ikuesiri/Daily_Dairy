@@ -10,6 +10,10 @@ app.use( express.static("public"))
 app.set("view engine", "ejs");
 
 
+//@desc method: GET |  route: "/"
+app.get("/", (req, res) =>{
+    res.render("home");
+});
 
 
 
