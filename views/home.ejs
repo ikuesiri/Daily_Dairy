@@ -3,7 +3,10 @@
  <h1>WELCOME!</h1>
  <p><%= welcomeContent %></p>
  <hr>
+ <% posts.forEach((post)=>{ %>
+    <h2><%= post.title %></h2>
+    <p><%= post.content %></p>
+ <%  }); %>
 
  <%- include("partials/footer") -%>
         
- 

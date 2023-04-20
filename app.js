@@ -12,10 +12,15 @@ const  welcomeContent = require("./customMssgs/welcome.mssg")
 const contactContent = require("./customMssgs/contact.mssg");
 const aboutContent = require("./customMssgs/about.mssg");
 
+
+// Global Array Variable to store User's messages
+const posts = [];
+
 //@desc method: GET |  route: "/"
 app.get("/", (req, res) =>{
     res.render("home", {
-        welcomeContent
+        welcomeContent,
+        posts
     });
 });
 
@@ -34,7 +39,22 @@ app.get("/about", (req, res) =>{
     });
 });
 
+//@desc method: GET | route "/create"
+app.get("/create", (req, res)=>{
+     res.render("create");
+})
 
-
+//@desc method: POST | route "/create"
+app.post("/create", (req, res)=>{
+    const post =  {
+        title : req.body.title,
+        content: req.body.content
+    }
+     posts.push(post);
+     res.redirect("/");
+})
 
 app.listen( 3000, ()=> console.log(`Server listening at port: 3000`));
+
+
+

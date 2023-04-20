@@ -1,3 +1,14 @@
 <%- include("partials/header") -%>
+<h1> Create Post</h1>
+<form action="/create" method="post">
+    <div class="createPost">
+        <label>Title</label>
+        <input type="text" name="title" autofocus required>
+        <label>Message</label>
+        <textarea name="content" id="" cols="30" rows="10"></textarea>
+    </div>
+    
+    <button type="submit" name="button">Publish</button>
+</form>
 
  <%- include("partials/footer") -%>
