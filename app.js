@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const  _ = require("lodash");
 
 // middleware to be able to parse user's input
 app.use( express.urlencoded({ extended : true}));
@@ -52,6 +53,23 @@ app.post("/create", (req, res)=>{
     }
      posts.push(post);
      res.redirect("/");
+})
+
+
+app.get("/posts/:title", (req, res) =>{
+    const requestedTitle = _.lowerCase(req.params.title);
+    posts.forEach((post) =>{
+        const storedTitle = _.lowerCase(post.title);
+        if(requestedTitle === storedTitle){
+           
+            res.render("posts", {
+                title : post.title,
+                content: post.content
+
+            })
+        }
+    })
+
 })
 
 app.listen( 3000, ()=> console.log(`Server listening at port: 3000`));

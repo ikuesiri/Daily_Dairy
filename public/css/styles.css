@@ -31,6 +31,7 @@ li a{
     text-decoration: none;
 }
 
+
 .display {
     height: 500px;
     padding: 30px;
@@ -44,6 +45,29 @@ li a{
     margin-bottom: 50px;
 }
 
+/* home route */
+.create-link {
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 0 0 50px;
+    font-size: 20px;
+}
+.create-link a{
+    text-decoration: none;
+    background-color:#fff;
+    color: #1a1515;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.create-link a:hover{
+    background-color: #1a1515;
+    color:#fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* create post route */
 .createPost{
     display: flex;
     flex-direction: column;
