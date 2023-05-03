@@ -52,17 +52,11 @@ router.post("/create", async(req, res)=>{
 
 router.get("/posts/:id", async(req, res) =>{
     const requestedId = req.params.id;
-    const posts = await Compose.find({});
-    
-    posts.forEach((post) =>{
-        const storedId =  post.id;
-        if(requestedId === storedId){
+    const post = await Compose.findOne({_id: requestedId });
             res.render("posts", {
                 title : post.title,
                 content: post.content
             })
-        }
-    })
 })
 
 module.exports = router; 
