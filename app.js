@@ -1,6 +1,14 @@
 const express = require("express");
 const app = express();
+//import database configuration
+const connectDB = require("./mongoose/DB/connectDB");
 const  _ = require("lodash");
+
+//environment variable set up
+require("dotenv").config();
+
+//router import
+const router = require("./router");
 
 // middleware to be able to parse user's input
 app.use( express.urlencoded({ extended : true}));
@@ -9,68 +17,11 @@ app.use( express.static("public"))
 //to be apply to used and render ejs template files
 app.set("view engine", "ejs");
 
-const  welcomeContent = require("./customMssgs/welcome.mssg")
-const contactContent = require("./customMssgs/contact.mssg");
-const aboutContent = require("./customMssgs/about.mssg");
-
-
+//initialize database
+connectDB();
 // Global Array Variable to store User's messages
-const posts = [];
 
-//@desc method: GET |  route: "/"
-app.get("/", (req, res) =>{
-    res.render("home", {
-        welcomeContent,
-        posts
-    });
-});
-
-//@desc method: GET |  route: "/contact"
-app.get("/contact", (req, res) =>{
-    res.render("contact", {
-        contactContent
-    });
-});
-
-
-//@desc method: GET |  route: "/about"
-app.get("/about", (req, res) =>{
-    res.render("about", {
-        aboutContent
-    });
-});
-
-//@desc method: GET | route "/create"
-app.get("/create", (req, res)=>{
-     res.render("create");
-})
-
-//@desc method: POST | route "/create"
-app.post("/create", (req, res)=>{
-    const post =  {
-        title : req.body.title,
-        content: req.body.content
-    }
-     posts.push(post);
-     res.redirect("/");
-})
-
-
-app.get("/posts/:title", (req, res) =>{
-    const requestedTitle = _.lowerCase(req.params.title);
-    posts.forEach((post) =>{
-        const storedTitle = _.lowerCase(post.title);
-        if(requestedTitle === storedTitle){
-           
-            res.render("posts", {
-                title : post.title,
-                content: post.content
-
-            })
-        }
-    })
-
-})
+app.use("/", router);
 
 app.listen( 3000, ()=> console.log(`Server listening at port: 3000`));
 
