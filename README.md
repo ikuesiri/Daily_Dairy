@@ -1,6 +1,5 @@
-# Daily Journal
 
-This is a simple web application that allows you to create and view journal entries. The application is built using a combination of **backend** technologies such as MongoDB, Express.js, and EJS as well as **frontend** technologies like HTML and CSS.
+This is a simple web application that allows you to create and view Diary entries. The application is built using a combination of **backend** technologies such as MongoDB, Express.js, and EJS as well as **frontend** technologies like HTML and CSS.
 
 ## Installation and Usage
 
